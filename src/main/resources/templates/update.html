@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+    <form method="post" action="/update">
+        <p>学生编号：<input th:value="${student.id}" readonly="readonly" name="id" /></p>
+        <p>学生姓名：<input th:value="${student.studentName}" name="StudentName" /></p>
+        <input type="submit" value="提交" />
+    </form>
+</body>
+</html>

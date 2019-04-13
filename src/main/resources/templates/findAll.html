@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>查询全部</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <table class="table table-striped table-bordered table-hover">
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>密码</th>
+            <th colspan="2">操作</th>
+        </tr>
+        <tr th:each="stu:${student}" >
+            <td th:text="${stu.id}"></td>
+            <td th:text="${stu.studentName}"></td>
+            <td><a th:href="@{delete(id=${stu.id})}">删除</a></td>
+            <td><a th:href="@{findById(id=${stu.id})}">修改</a></td>
+        </tr>
+        <tr>
+            <td th:switch="${pageNum}">
+                <p th:case="1"><a th:href="@{/(pageNum=1)}">上一页</a></p>
+                <p th:case="*"><a th:href="@{/(pageNum=${pageNum}-1)}">上一页</a></p>
+            </td>
+
+            <td th:switch="${pageNum}">
+                <p th:case="${pages}"><a th:href="@{/(pageNum=${pages})}">下一页</a></p>
+                <p th:case="*"><a th:href="@{/(pageNum=${pageNum}+1)}">下一页</a></p>
+            </td>
+        </tr>
+        <tr>
+            <td><a href="/inserts">添加新学生</a></td>
+        </tr>
+    </table>
+</body>
+</html>
